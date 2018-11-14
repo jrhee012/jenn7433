@@ -5,14 +5,18 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node build/src/app.js",
-    "dev": "nodemon src/app.js --exec 'npx babel-node'",
+    "dev": "NODE_ENV=dev nodemon src/app.js --exec 'npx babel-node'",
+    "prod": "NODE_ENV=production nodemon build/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d build/src && cp package.json build/ && cd build/ && tar -zcf ../build.tar.gz ."
+    "build": "babel src -d build/src && cp package.json build/ && cp -vr src/views build/src/views && cp -vr src/public build/src/public",
+    "rebuild": "rm -r build/ && echo \"build directory removed!\" && npm run build"
   },
   "author": "Jaehyuk Rhee",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "morgan": "^1.9.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },

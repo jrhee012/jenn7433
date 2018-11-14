@@ -1,8 +1,8 @@
 import server from './server';
 
-// const port = process.env.PORT || 1337;
-const appName = 'test server';
+const port = process.env.PORT || 1337;
+const appName = 'JENN7433 SERVER';
 
-server.listen(process.env.PORT || 5000, () => {
-    console.log(`${appName} running on port: ${process.env.PORT || 5000}`);
+server.listen(port, () => {
+    console.log(`${appName} running on port: ${port}`);
 })
