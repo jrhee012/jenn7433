@@ -13,7 +13,7 @@ if (env === 'production') {
     viewsPath = './build/src/views';
     publicPath = __dirname + '/public';
 }
-console.log(publicPath)
+
 const server = express();
 
 // use ejs for view engine for express server

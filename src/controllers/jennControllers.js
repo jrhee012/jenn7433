@@ -1,3 +1,4 @@
+const defaultMsg = 'i love you, jenn <3';
 let pageMsg = 'i love you, jenn <3';
 
 const sendRenderResponse = res => {
@@ -6,16 +7,19 @@ const sendRenderResponse = res => {
 }
 
 export default {
-    // index: (req, res) => res.status(200).send(pageMsg),
-    index: (req, res) => sendRenderResponse(res),
+    root: (req, res) => sendRenderResponse(res),
     post: (req, res) => {
-        console.log('jenn req params: ', req.params)
-        console.log('jenn req body: ', req.body)
-        console.log(req.query)
-        console.log('req: ', req);
-        const message = req.params.message || pageMsg;
-        pageMsg = message;
-        // return sendRenderResponse(res);
-        return res.status(200)
+        let postMsg;
+        try {
+            postMsg = req.body['jenn-msg-input'];
+            pageMsg = postMsg;
+        } catch (e) {
+            console.log('err: ', e);
+        }
+        return res.redirect('/jenn');
     },
-}
+    reset: (req, res) => {
+        pageMsg = defaultMsg;
+        return res.redirect('/jenn');
+    },
+};
