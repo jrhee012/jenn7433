@@ -1,0 +1,29 @@
+{
+  "name": "heroku_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js --exec 'npx babel-node'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d build/src && cp package.json build/ && cd build/ && tar -zcf ../build.tar.gz ."
+  },
+  "author": "Jaehyuk Rhee",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
